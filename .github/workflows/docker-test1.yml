@@ -31,4 +31,4 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Log into registry
-        run: echo ${{ steps.get_zerotier_version.outputs.deployment_id }}
+        run: echo ${{ needs.zerotier.outputs }}
