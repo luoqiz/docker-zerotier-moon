@@ -1,21 +1,17 @@
 name: Publish Docker image
 
 on:
-  push:
-    # Publish `master` as Docker `latest` image.
-    branches:
-      - master
-
-    # Publish `v1.2.3` tags as releases.
-    tags:
-      - v*
+  release:
+  
+    types: [published]
 
 env:
   # TODO: Change variable to your image's name.
   IMAGE_NAME: luoqiz/zerotier-moon
 
 jobs:
-  push:
+  release:
+    
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
 
@@ -32,4 +28,4 @@ jobs:
           name: ${{ env.IMAGE_NAME }}
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          tags: "latest,${{ env.STATE_RELEASE_VERSION }}"
+          tags: "latest,${{ env.STATE_RELEASE_VERSION }}" 
