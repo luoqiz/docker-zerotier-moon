@@ -1,0 +1,32 @@
+name: Publish Docker image
+
+on:
+  push:
+    # Publish `master` as Docker `latest` image.
+    branches:
+      - master
+
+    # Publish `v1.2.3` tags as releases.
+    tags:
+      - v*
+
+env:
+  # TODO: Change variable to your image's name.
+  IMAGE_NAME: luoqiz/zerotier-moon
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+
+    steps:
+      - uses: actions/checkout@v2
+        
+      - name: Publish to Registry
+        pre: echo ::save-state name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: $IMAGE_NAME 
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          tags: "latest,${{ env.STATE_RELEASE_VERSION }}"
