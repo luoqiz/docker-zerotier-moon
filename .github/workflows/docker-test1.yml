@@ -31,4 +31,4 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Log into registry
-        run: echo ${{ needs.zerotier.outputs }}
+        run: echo ${{ needs.zerotier.outputs.output1 }}
