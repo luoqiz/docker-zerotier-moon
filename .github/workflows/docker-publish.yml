@@ -22,7 +22,10 @@ jobs:
         
       - name: Get version
         id: get_version
-        run: echo ::save-state name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
+        run: |
+          echo "::set-output name=version::$(cat ReleaseTag | head -n1)"
+          echo "ReleaseTag=$(cat ReleaseTag | head -n1)" 
+          echo "::set-output name=status::success"
         
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@master
@@ -30,4 +33,4 @@ jobs:
           name: ${{ env.IMAGE_NAME }}
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          tags: "latest,${{ env.STATE_RELEASE_VERSION }}" 
+          tags: "latest,${{ steps.get_version.outputs.version }}" 
