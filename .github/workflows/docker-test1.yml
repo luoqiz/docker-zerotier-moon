@@ -43,7 +43,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
+      
+      - name: zerotier_version
+        run: echo ${{ needs.zerotier.outputs.zerotier_version }}
+      - name: moon_version
+        run: echo '${{ needs.zerotier.outputs.moon_version }}'
+     
       - name: Publish to Registry
         if: ${{ needs.zerotier.outputs.moon_version !=  needs.zerotier.outputs.zerotier_version }}
         uses: elgohr/Publish-Docker-Github-Action@master
