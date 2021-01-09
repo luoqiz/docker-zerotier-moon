@@ -45,15 +45,15 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: zerotier_version
-        run: echo ${{ needs.zerotier.outputs.zerotier_version }}
+        run: echo ${{ needs.get_version.outputs.zerotier_version }}
       - name: moon_version
-        run: echo '${{ needs.zerotier.outputs.moon_version }}'
+        run: echo '${{ needs.get_version.outputs.moon_version }}'
      
       - name: Publish to Registry
-        if: ${{ needs.zerotier.outputs.moon_version !=  needs.zerotier.outputs.zerotier_version }}
+        if: ${{ needs.get_version.outputs.moon_version !=  needs.get_version.outputs.zerotier_version }}
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
           name: ${{ env.IMAGE_NAME }}
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          tags: "latest,${{ needs.zerotier.outputs.zerotier_version }}" 
+          tags: "latest,${{ needs.get_version.outputs.zerotier_version }}" 
