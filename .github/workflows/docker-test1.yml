@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       zerotier_version: ${{ steps.get_zerotier_version.outputs.version }}
+      moon_version: ${{ steps.get_zerotier_moon_version.outputs.version }}
     steps:
       - name: Get spikhalskiy/zerotier-containerized version
         uses: luoqiz/docker-images-latest-version@master
@@ -25,8 +26,18 @@ jobs:
         with:
           image: spikhalskiy/zerotier 
       
-      - name: test version
-        run: echo ${{ steps.get_zerotier_version.outputs.version }}
+      - name: Get luoqiz/zerotier-moon version
+        uses: luoqiz/docker-images-latest-version@master
+        id: get_zerotier_moon_version
+        with:
+          image: luoqiz/zerotier-moon
+        
+      - name: Get nginx version
+        uses: luoqiz/docker-images-latest-version@master
+        id: get_nginx_version
+        with:
+          image: nginx          
+      
 
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
