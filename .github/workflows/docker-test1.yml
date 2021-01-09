@@ -36,7 +36,7 @@ jobs:
         uses: luoqiz/docker-images-latest-version@master
         id: get_nginx_version
         with:
-          image: nginx          
+          image: library/nginx        
       
 
   # Push image to GitHub Packages.
