@@ -30,7 +30,7 @@ jobs:
         uses: luoqiz/docker-images-latest-version@master
         id: get_zerotier_moon_version
         with:
-          image: luoqiz/zerotier-moon
+          image: ${{ env.IMAGE_NAME }}
       
 
   # Push image to GitHub Packages.
