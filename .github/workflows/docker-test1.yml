@@ -21,6 +21,9 @@ jobs:
         id: get_zerotier_version
         with:
           image: spikhalskiy/zerotier 
+      
+      - name: test version
+        run: echo ${{ steps.get_zerotier_version.outputs.version }}
 
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
