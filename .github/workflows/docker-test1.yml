@@ -53,4 +53,7 @@ jobs:
       - name: Log into registry
         run: echo ${{ needs.zerotier.outputs.zerotier_version }}
       - name: test
-        run: echo '${{ needs.zerotier.outputs.zerotier_version }}'
+        run: echo '${{ needs.zerotier.outputs.moon_version }}'
+      - name: compare
+        if: ${{ needs.zerotier.outputs.moon_version }} !=  ${{ needs.zerotier.outputs.zerotier_version }}
+        run: echo true
