@@ -57,3 +57,15 @@ docker run --name zerotier-moon -d -p 9994:9993/udp luoqiz/zerotier-moon -4 1.2.
 ```
 
 Replace 9994 with your own custom port for ZeroTier moon.
+
+### Next step
+```
+docker exec zerotier-moon zerotier-cli status
+docker exec zerotier-moon zerotier-cli join <NetworkId>
+```
+
+#### Other client （see zerotier-moon logs）
+```
+zerotier-cli orbit <moonId> <moonId>
+zerotier-cli listpeers
+```

@@ -1,4 +1,4 @@
-vimcat #!/bin/sh
+#!/bin/sh
 
 # usage ./startup.sh -4 1.2.3.4 -6 2001:abcd:abcd::1 -p 9993
 
