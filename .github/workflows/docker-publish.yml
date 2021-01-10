@@ -24,7 +24,7 @@ jobs:
         uses: luoqiz/docker-images-latest-version@master
         id: get_zerotier_containerized_version
         with:
-          image: spikhalskiy/zerotier 
+          image: luoqiz/zerotier-container
       
       - name: Get luoqiz/zerotier-moon version
         uses: luoqiz/docker-images-latest-version@master
