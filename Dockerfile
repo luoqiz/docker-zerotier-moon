@@ -1,8 +1,9 @@
-FROM spikhalskiy/zerotier-containerized
+FROM luoqiz/zerotier-container
 
-LABEL maintainer="seedgou <seedgou@gmail.com>"
+LABEL maintainer="luoqiz <luoqiangzheng@gmail.com>"
 
-#RUN ln -sf /zerotier-one /zerotier-idtool
+RUN apt-get update &&  apt-get install -y procps
+
 COPY startup.sh /startup.sh
 EXPOSE 9993/udp
 
