@@ -62,6 +62,7 @@ Replace 9994 with your own custom port for ZeroTier moon.
 ```
 docker exec zerotier-moon zerotier-cli status
 docker exec zerotier-moon zerotier-cli join <NetworkId>
+docker restart zerotier-moon
 ```
 
 #### Other client （see zerotier-moon logs）
