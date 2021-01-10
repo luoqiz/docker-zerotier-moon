@@ -1,4 +1,4 @@
-name: Docker
+name: Compare version and push zerotier-moon
 
 on:
   push:
