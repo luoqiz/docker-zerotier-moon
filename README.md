@@ -1,6 +1,7 @@
 # docker-zerotier-moon
 A docker image to create ZeroTier moon in one setp.<br/>
-If there is a problem with centos7 operation, add `--rm --cap-add=NET_ADMIN --cap-add=SYS_ADMIN --device=/dev/net/tun`  after `docker run` 
+If there is a problem with centos7 operation, add `--rm --cap-add=NET_ADMIN --cap-add=SYS_ADMIN --device=/dev/net/tun`  after `docker run` <br/>
+Follow the official version
 ## Usage
 
 ### Pull the image
